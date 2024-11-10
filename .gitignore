@@ -1,5 +1,25 @@
-# Ignorer tous les dossiers nommés env et venv
+# Ignorer les environnements virtuels
 env/
 venv/
 **/env/
 **/venv/
+
+# Ignorer les fichiers de migrations Django
+*/migrations/
+*/migrations/*
+!*/migrations/__init__.py  # Garder le fichier __init__.py dans les migrations pour éviter des problèmes
+
+# Ignorer les fichiers générés par l'environnement virtuel
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Ignorer les fichiers de configuration spécifiques à l'IDE (par exemple, VSCode)
+.vscode/
+
+# Ignorer le fichier de base de données SQLite de Django (si utilisé)
+db.sqlite3
+
+# Ignorer les fichiers de log
+*.log
