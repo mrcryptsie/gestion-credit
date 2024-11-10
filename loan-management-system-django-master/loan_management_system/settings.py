@@ -1,4 +1,4 @@
-from pathlib import Path
+"""from pathlib import Path
 import os
 #import django_heroku
 import dj_database_url
@@ -138,3 +138,98 @@ MEDIA_URL = '/media/'
 LOGIN_URL = '/account/login/'
 
 #django_heroku.settings(locals())
+"""
+
+from pathlib import Path
+import os
+from decouple import config
+import dj_database_url
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+SECRET_KEY = config('SECRET_KEY', default='0k7(=3xy503l5nio^)k29b1ryxyfm)r%k)))4xqq3li4)og%9c')
+
+DEBUG = config('DEBUG', default=False, cast=bool)
+ALLOWED_HOSTS = ['.vercel.app']
+
+INSTALLED_APPS = [
+    'jazzmin',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'loginApp',
+    'loanApp',
+    'managerApp',
+    'widget_tweaks',
+    'django_cleanup.apps.CleanupConfig',
+    'bootstrap4',
+    'mathfilters',
+]
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+]
+
+ROOT_URLCONF = 'loan_management_system.urls'
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [TEMPLATES_DIR, ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+WSGI_APPLICATION = 'loan_management_system.wsgi.application'
+
+# Database
+DATABASES = {
+    'default': dj_database_url.config(default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}")
+}
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
+
+LANGUAGE_CODE = 'en-us'
+TIME_ZONE = 'Asia/Dhaka'
+USE_I18N = True
+USE_L10N = True
+USE_TZ = True
+
+# Static files configuration
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_DIRS = [STATIC_DIR]
+
+# Media
+MEDIA_URL = '/media/'
+
+# Login URL
+LOGIN_URL = '/account/login/'
