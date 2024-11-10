@@ -153,7 +153,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = config('SECRET_KEY', default='0k7(=3xy503l5nio^)k29b1ryxyfm)r%k)))4xqq3li4)og%9c')
 
 DEBUG = config('DEBUG', default=False, cast=bool)
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh', '127.0.0.1', 'localhost']
 #ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 INSTALLED_APPS = [
@@ -205,9 +205,21 @@ TEMPLATES = [
 WSGI_APPLICATION = 'loan_management_system.wsgi.application'
 
 # Database
-DATABASES = {
+"""DATABASES = {
     'default': dj_database_url.config(default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}")
+}"""
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',  # Nom de la base de données
+        'USER': 'postgres',  # Nom d'utilisateur
+        'PASSWORD': 'BWLqHLVZIQZyxOyBDwnNddatJSPhxUOd',  # Mot de passe
+        'HOST': 'autorack.proxy.rlwy.net',  # Hôte de la base de données
+        'PORT': '33767',  # Port de la base de données
+    }
 }
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -225,9 +237,11 @@ USE_TZ = True
 
 # Static files configuration
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATICFILES_DIRS = [STATIC_DIR]
+#STATICFILES_DIRS = [STATIC_DIR]
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 # Media
 MEDIA_URL = '/media/'
