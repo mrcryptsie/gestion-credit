@@ -16,10 +16,11 @@ A loan management application built with Django, SQLite3, JavaScript, HTML, CSS,
 
 ## Getting Started
 
-1. Clone the repository: `git clone https://github.com/Nahidjc/loan-management-system-django.git`
-2. Install dependencies with `pip install -r requirements.txt`.
-3. Configure the database settings in the environment variables.
-4. Run the development server: `python manage.py runserver`.
+1. Clone the repository: `https://github.com/mrcryptsie/gestion-credit.git`
+2. Create a virtual environment: 'python -m venv venv'
+3. Activate the environment 'venv/Scripts/Activate' si tu es sur windows
+4. Install dependencies with `pip install -r requirements.txt`.
+6. Run the development server: `python manage.py runserver`.
 
 ## Usage
 
