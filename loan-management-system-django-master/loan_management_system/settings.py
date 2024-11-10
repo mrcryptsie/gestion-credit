@@ -154,7 +154,6 @@ SECRET_KEY = config('SECRET_KEY', default='0k7(=3xy503l5nio^)k29b1ryxyfm)r%k)))4
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = ['.vercel.app', '.now.sh', '127.0.0.1', 'localhost']
-#ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 INSTALLED_APPS = [
     'jazzmin',
@@ -181,7 +180,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Utilisation de Whitenoise pour les fichiers statiques
 ]
 
 ROOT_URLCONF = 'loan_management_system.urls'
@@ -204,11 +203,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'loan_management_system.wsgi.application'
 
-# Database
-"""DATABASES = {
-    'default': dj_database_url.config(default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}")
-}"""
-
+# Database Configuration
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -219,7 +214,6 @@ DATABASES = {
         'PORT': '33767',  # Port de la base de données
     }
 }
-
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -235,17 +229,17 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-# Static files configuration
+# Static files configuration for Vercel and Whitenoise
 STATIC_URL = '/static/'
-#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-#STATICFILES_DIRS = [STATIC_DIR]
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
-#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+
+# Configurer le répertoire de fichiers statiques pour le déploiement
+STATICFILES_DIRS = [STATIC_DIR]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Media
+# Media files configuration
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Login URL
 LOGIN_URL = '/account/login/'
