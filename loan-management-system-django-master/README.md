@@ -20,7 +20,9 @@ A loan management application built with Django, SQLite3, JavaScript, HTML, CSS,
 2. Create a virtual environment: 'python -m venv venv'
 3. Activate the environment 'venv/Scripts/Activate' si tu es sur windows
 4. Install dependencies with `pip install -r requirements.txt`.
-6. Run the development server: `python manage.py runserver`.
+5. Migrations:  python manage.py makemigrations
+6. Migrate: python manage.py migrate
+7. Run the development server: `python manage.py runserver`.
 
 ## Usage
 
