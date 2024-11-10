@@ -1,18 +1,13 @@
 {
-	"builds": [
-		{
-			"src": "loan-management-system-django-master/loan_management_system/loan_management_system/wsgi.py",
-			"use": "@vercel/python",
-			"config": {
-				"maxLambdaSize": "15mb",
-				"runtime": "python3.10"
-			}
-		}
-	],
-	"routes": [
-		{
-			"src": "/(.*)",
-			"dest": "loan-management-system-django-master/loan_management_system/loan_management_system/wsgi.py"
-		}
-	]
+    "builds": [{
+        "src": "loan_management_system/wsgi.py",
+        "use": "@vercel/python",
+        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+    }],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "loan_management_system/wsgi.py"
+        }
+    ]
 }
