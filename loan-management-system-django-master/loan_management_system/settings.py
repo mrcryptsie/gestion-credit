@@ -154,6 +154,7 @@ SECRET_KEY = config('SECRET_KEY', default='0k7(=3xy503l5nio^)k29b1ryxyfm)r%k)))4
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = ['.vercel.app']
+#ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 INSTALLED_APPS = [
     'jazzmin',
