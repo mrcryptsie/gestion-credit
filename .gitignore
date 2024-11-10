@@ -1,0 +1,5 @@
+# Ignorer tous les dossiers nommés env et venv
+env/
+venv/
+**/env/
+**/venv/
